@@ -1,20 +1,15 @@
-import { ref } from 'vue';
 import type { Ref } from 'vue';
 import type Task from '../models/task'
 
 const useAddingTask = (tasksRef: Ref<Task[]>) => {
-  const taskNameRef = ref('');
-
-  const addTask = () => {
+  const addTask = (taskName: string) => {
     tasksRef.value.push({
-      name: taskNameRef.value,
+      name: taskName,
       status: false,
     });
-    taskNameRef.value = '';
   }
 
   return {
-    taskNameRef,
     addTask,
   }
 }
